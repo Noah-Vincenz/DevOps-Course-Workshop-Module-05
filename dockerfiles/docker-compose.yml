@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  cliapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.cliapp
+    volumes:
+     - shared-volume:/opt/chimera/data
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.webapp
+    ports:
+      - "8080:80"
+    volumes:
+      - shared-volume:/opt/chimera/data
+  # redis:
+  #   image: redis
+
+volumes:
+  shared-volume:
