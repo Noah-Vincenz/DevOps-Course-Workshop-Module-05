@@ -10,6 +10,9 @@ COPY ./run.sh ./run.sh
 RUN chmod +x ./run.sh
 # The data folder should be shared with the webapp
 ENV DATA_FOLDER=/opt/chimera/data
+# If using redis then comment line above and uncomment below
+# ENV REDIS_HOST=redis-host
+# ENV REDIS_PORT=6379
 RUN mkdir /var/log/chimera  \
   && touch /var/log/cron.log
 ENTRYPOINT ["./run.sh"]
